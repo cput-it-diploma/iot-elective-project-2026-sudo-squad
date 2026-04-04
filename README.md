@@ -38,19 +38,20 @@
 | Student Name | Student Number | Role / Responsibility |
 |---|---|---|
 | [Tebogo Pii] | [230226442] | [Hardware Lead + Backend Lead] |
-| [Name Surname] | [Student No.] | [e.g. Software Lead] |
-| [Name Surname] | [Student No.] | [e.g. Documentation Lead] |
-| [Name Surname] | [Student No.] | [e.g. Testing Lead] |
+| [Nuyra Swanson] | [221290524] | [FrontEnd Developer] |
+| [Tlangelani Chauke] | [222520663] | [Database Administrator] |
+| [Confidence Khoza] | [222927402] | UI/UX and Documentation] |
+| [Matinisa] | [222527269] | [Hardware] |
 
 ---
 
 ## 💡 Project Idea & Problem Statement
 
 ### Problem Statement
-> Using paper sign-in sheets or physical roll calls to track student attendance is ineffective, takes up important lecture time, and is very vulnerable to proxy-signing, or buddy-punching. Furthermore, instructors are unable to see the capacity of the venue in real time (tailgating). Additionally, academic institutions find it difficult to confirm a student's actual presence on campus for high-stakes tests due to the rise of remote and hybrid assessments, which makes assessment fraud more likely.
+Using paper sign-in sheets or physical roll calls to track student attendance is ineffective, takes up important lecture time, and is very vulnerable to proxy-signing, or buddy-punching. Furthermore, instructors are unable to see the capacity of the venue in real time (tailgating). Additionally, academic institutions find it difficult to confirm a student's actual presence on campus for high-stakes tests due to the rise of remote and hybrid assessments, which makes assessment fraud more likely.
 
 ### Proposed Solution
-> An Arduino-based 4-sensor array powers Sudo-Scan, an automated digital attendance kiosk. Students utilize an RFID reader to check in using their current 13.56MHz student cards. The gadget has an anti-tailgating body counter (IR Obstacle sensor), a check-in/out mode toggle (Touch sensor), and an environmentally friendly "wake-up" mode (Ultrasonic sensor).
+An Arduino-based 4-sensor array powers Sudo-Scan, an automated digital attendance kiosk. Students utilize an RFID reader to check in using their current 13.56MHz student cards. The gadget has an anti-tailgating body counter (IR Obstacle sensor), a check-in/out mode toggle (Touch sensor), and an environmentally friendly "wake-up" mode (Ultrasonic sensor).
 
 The system's "Strict Exam Mode" for invigilators is crucial. The system quickly grants or denies entrance and verifies the student's physical attendance for the test by requiring a physical RFID tap at the venue door and cross-referencing the student's UID with a secure exam roster database.
 
@@ -67,7 +68,11 @@ The system's "Strict Exam Mode" for invigilators is crucial. The system quickly 
 ![System Architecture Diagram](images/architecture_diagram.png)
 
 ### Design Decisions
-> _Explain the key design decisions your group made._
+Microcontroller Selection: To guarantee minimal power consumption, rigorous adherence to the project brief, and extremely responsive low-level C++ sensor control, we chose the Arduino Uno R3 over a Linux-based SBC (such as a Raspberry Pi).
+
+Software Stack Pivot: Instead of using a complex Java Spring Boot architecture, we opted for a lightweight Python (Flask) and SQLite backend. For basic IoT data logging, this micro-framework method is far more effective and guarantees quick HTTP response times for the Arduino.
+
+Hardware User Experience: We steered clear of intricate biometric sensors that result in bottlenecks in serial communication. To enable users to interact with the device statuses (Check-In, Check-Out, and Exam Mode), we instead implemented a touch sensor.
 
 ---
 
