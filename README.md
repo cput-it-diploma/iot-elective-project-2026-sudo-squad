@@ -27,8 +27,8 @@
 
 ## 📌 Project Overview
 
-**Project Title:** `[Your Project Title Here]`  
-**Group Name / Number:** `[Group Name / Number]`  
+**Project Title:** Sudo-Scan: IoT Smart Attendance & Venue Management System  
+**Group Name / Number:** Sudo Squad  
 **Presentation Date:** End of April 2026
 
 ---
@@ -37,25 +37,29 @@
 
 | Student Name | Student Number | Role / Responsibility |
 |---|---|---|
-| [Name Surname] | [Student No.] | [e.g. Hardware Lead] |
-| [Name Surname] | [Student No.] | [e.g. Software Lead] |
-| [Name Surname] | [Student No.] | [e.g. Documentation Lead] |
-| [Name Surname] | [Student No.] | [e.g. Testing Lead] |
+| [Tebogo Pii] | [230226442] | [Hardware Lead + Backend Lead] |
+| [Nuyra Swanson] | [221290524] | [FrontEnd Developer] |
+| [Tlangelani Chauke] | [222520663] | [Database Administrator] |
+| [Confidence Khoza] | [222927402] | UI/UX and Documentation] |
+| [Matinisa Lubisi] | [222527269] | [Hardware] |
 
 ---
 
 ## 💡 Project Idea & Problem Statement
 
 ### Problem Statement
-> _Describe the problem your IoT solution addresses. Be specific._
+Using paper sign-in sheets or physical roll calls to track student attendance is ineffective, takes up important lecture time, and is very vulnerable to proxy-signing, or buddy-punching. Furthermore, instructors are unable to see the capacity of the venue in real time (tailgating). Additionally, academic institutions find it difficult to confirm a student's actual presence on campus for high-stakes tests due to the rise of remote and hybrid assessments, which makes assessment fraud more likely.
 
 ### Proposed Solution
-> _Explain how your IoT device/system solves the problem._
+An Arduino-based 4-sensor array powers Sudo-Scan, an automated digital attendance kiosk. Students utilize an RFID reader to check in using their current 13.56MHz student cards. The gadget has an anti-tailgating body counter (IR Obstacle sensor), a check-in/out mode toggle (Touch sensor), and an environmentally friendly "wake-up" mode (Ultrasonic sensor).
+
+The system's "Strict Exam Mode" for invigilators is crucial. The system quickly grants or denies entrance and verifies the student's physical attendance for the test by requiring a physical RFID tap at the venue door and cross-referencing the student's UID with a secure exam roster database.
 
 ### Objectives
-- [ ] Objective 1
-- [ ] Objective 2
-- [ ] Objective 3
+- [ ] Objective 1 : Automate student check-ins using RFID technology to eliminate manual paper registers.
+- [ ] Objective 2 : Detect and flag venue "tailgating" by comparing successful RFID scans with physical body counts via an IR obstacle sensor.
+- [ ] Objective 3 : Transmit all attendance data in real-time to a Spring Boot/MySQL backend and display it on a React.js lecturer dashboard.
+- [ ] Objective 4 : Implement a "Strict Exam Mode" to verify a student's physical presence on campus, cross-referencing RFID scans against secure exam rosters to prevent remote assessment fraud.
 
 ---
 
@@ -64,7 +68,11 @@
 ![System Architecture Diagram](images/architecture_diagram.png)
 
 ### Design Decisions
-> _Explain the key design decisions your group made._
+Microcontroller Selection: To guarantee minimal power consumption, rigorous adherence to the project brief, and extremely responsive low-level C++ sensor control, we chose the Arduino Uno R3 over a Linux-based SBC (such as a Raspberry Pi).
+
+Software Stack Pivot: Instead of using a complex Java Spring Boot architecture, we opted for a lightweight Python (Flask) and SQLite backend. For basic IoT data logging, this micro-framework method is far more effective and guarantees quick HTTP response times for the Arduino.
+
+Hardware User Experience: We steered clear of intricate biometric sensors that result in bottlenecks in serial communication. To enable users to interact with the device statuses (Check-In, Check-Out, and Exam Mode), we instead implemented a touch sensor.
 
 ---
 
