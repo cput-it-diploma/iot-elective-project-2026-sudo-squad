@@ -3,6 +3,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.sudosquadattendancesystem.domain.AttendanceLog;
 
+import java.util.List;
+
 @Repository
 public interface AttendanceLogRepository extends JpaRepository<AttendanceLog, Long> {
+    List<AttendanceLog> findAllByOrderByScanTimestampDesc();
 }
